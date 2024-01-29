@@ -151,6 +151,7 @@ class DataPenggunaController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         $img = $request->file('img');
+        //Pengkondisian Namerole dan Isrole dimana jika admin nilai nya 1 dan operator nilainya
         if ($namerole === 'administrator') {
             $isrole = 1;
         }else{

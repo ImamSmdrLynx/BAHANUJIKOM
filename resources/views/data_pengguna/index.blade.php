@@ -2,7 +2,7 @@
 @section('title', 'Data Pengguna')
 @section('content')
 
-@php 
+@php
 $Tanggal = new \App\Helpers\Tanggal; //panggil no static function
 $Konversi = new \App\Helpers\Konversi; //panggil no static function
 @endphp
@@ -25,7 +25,7 @@ $Konversi = new \App\Helpers\Konversi; //panggil no static function
     <div class="row row-sm">
         <div class="col-xl-12 col-lg-12 col-sm-12 col-md-12">
             <div class="card">
-                
+
 
                 <div class="pd-t-10 pd-s-10 pd-e-10 bg-white bd-b">
                     <div class="row">
@@ -54,7 +54,7 @@ $Konversi = new \App\Helpers\Konversi; //panggil no static function
                     @include('_component.message')
                     <div class="row">
                         <div class="col-md-3">
-                            <label class="form-label mt-2 mb-0">Hak Akses</label> 
+                            <label class="form-label mt-2 mb-0">Hak Akses</label>
                             <select id="f1" class="form-control select2" onchange="reload_table()">
                                 <option value="">=== semua ===</option>
                                 <option value="1" @if(request()->get('f1')==1) selected @endif>administrator</option>
@@ -146,7 +146,7 @@ $Konversi = new \App\Helpers\Konversi; //panggil no static function
                             </div>
                         </div>
                     </div>
-                        
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="float-right btn btn-primary pd-x-30 mg-r-5 mg-t-5"><i class='fa fa-save'></i> Save </button>
@@ -161,12 +161,12 @@ $Konversi = new \App\Helpers\Konversi; //panggil no static function
 </div>
 <!-- /container -->
 
-
+<!-- di sini adalah function script yang memuat fitur export import data -->
         <script>
             $(function() {
                 // formelement
                 $('.select2').select2({ width: 'resolve' });
-                
+
                 // init datatable.
                 $('#tbl_list').DataTable({
                     "paging": true,
@@ -179,28 +179,30 @@ $Konversi = new \App\Helpers\Konversi; //panggil no static function
                 });
 
             });
-            
+            // function reload
             function reload_table(){
-                var f1 =  $('#f1').val();	
+                var f1 =  $('#f1').val();
                 window.location.href="data_pengguna?f1="+f1;
             }
 
-        
+            // function import
             function formImport() {
                 $("#formImport")[0].reset();
                 $("#mdl_formImport").modal('show');
             }
+            //function excell
             function exportExcel() {
                 var f1 =  $('#f1').val();
-                var s = $('.whatever').val();		
+                var s = $('.whatever').val();
                 window.open(
                 "data_pengguna/export_excel?s="+s+"&f1="+f1,
                     '_blank' // <- This is what makes it open in a new window.
                 );
             }
+            // function pdf
             function exportPdf() {
                 var f1 =  $('#f1').val();
-                var s = $('.whatever').val();		
+                var s = $('.whatever').val();
                 window.open(
                 "data_pengguna/export_pdf?s="+s+"&f1="+f1,
                     '_blank' // <- This is what makes it open in a new window.
@@ -208,7 +210,7 @@ $Konversi = new \App\Helpers\Konversi; //panggil no static function
             }
 
         </script>
-    
+
 
 
 

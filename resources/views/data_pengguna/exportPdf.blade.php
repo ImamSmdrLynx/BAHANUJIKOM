@@ -24,25 +24,26 @@ $Tanggal = new \App\Helpers\Tanggal; //panggil no static function
 		<h4>DATA PENGGUNA</h4>
 		<p>Waktu Export : {{date('d-m-Y H:i')}}</p>
 	</center>
- 
+    <!-- table penempatan download pdf -->
 	<table class='table table-bordered'>
 		<thead>
 		<tr>
-			<th>No</th> 
+			<th>No</th>
 			<th>Nama</th>
 			<th>Email</th>
-			<th>Hak Akses</th> 
-			<th>Waktu Input</th> 
+			<th>Hak Akses</th>
+			<th>Waktu Input</th>
 		</tr>
 		</thead>
 		<tbody>
 		@php $no=1; @endphp
 		@if(count($data))
 		@foreach($data as $dt)
-			@php 
+			@php
 			$dbKategori=DB::table('tm_kategoribarang')->select('*')->where('id','=',$dt->kategori_id)->first();
 			@endphp
 			<tr>
+                <!-- pengambilan data dari data base dan juga integrasi dengan export pdf -->
                <td>{{$no++}}</td>
                <td>{{$dt->name??''}}</td>
                <td>{{$dt->email??''}}</td>
@@ -53,6 +54,6 @@ $Tanggal = new \App\Helpers\Tanggal; //panggil no static function
 		@endif
 		</tbody>
 	</table>
- 
+
 </body>
 </html>

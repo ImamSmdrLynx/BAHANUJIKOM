@@ -36,15 +36,15 @@ class ImportDataPenggunaClass implements ToCollection, WithCalculatedFormulas
         $this->Tanggal = new Tanggal();
         $this->Konversi = new Konversi();
     }
-
+            //Function pengelompokan Data
     public function collection(Collection $rows)
     {
         $trDt = [];
         $this->insert = 0;
-        $this->edit = 0; 
-        $this->gagal = 0; 
+        $this->edit = 0;
+        $this->gagal = 0;
         $this->listgagal = "";
-
+//array import data
         foreach ($rows as $idx => $row) {
             if ($idx > 0) {
                 //DECLARE REQUEST
@@ -53,7 +53,7 @@ class ImportDataPenggunaClass implements ToCollection, WithCalculatedFormulas
                 $email = isset($row[2])?($row[2]):'';
                 $password = isset($row[3])?($row[3]):'';
                 $namerole = isset($row[4])?($row[4]):'';
-                
+
                 //READY REQUEST
                 $trDt[$idx]['name'] = $name;
                 $trDt[$idx]['email'] = $email;
@@ -70,7 +70,7 @@ class ImportDataPenggunaClass implements ToCollection, WithCalculatedFormulas
                     if ($trDt[$idx]['namerole'] === 'adiministrator') {
                         $isrole = '1';
                     }else{
-                        $isrole = '2'; //Atur nilai "isrole" sesuai kebutuhan 
+                        $isrole = '2'; //Atur nilai "isrole" sesuai kebutuhan
                     }
                     // SAVE THE DATA
                     if ($data->save()) {
@@ -89,7 +89,7 @@ class ImportDataPenggunaClass implements ToCollection, WithCalculatedFormulas
                     if ($trDt[$idx]['namerole'] === 'administrator') {
                         $isrole = '1';
                     }else{
-                        $isrole = '2'; //Atur nilai "isrole" sesuai kebutuhan 
+                        $isrole = '2'; //Atur nilai "isrole" sesuai kebutuhan
                     }
                         // SAVE THE DATA
                         if ($data->save()) {

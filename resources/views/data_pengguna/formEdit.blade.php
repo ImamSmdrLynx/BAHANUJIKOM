@@ -25,9 +25,10 @@
                     <div class="main-content-label mg-b-5">
                         Form Edit Pengguna
                     </div>
+                    <!-- Formulir pengisian fitur update  -->
                     <p class="mg-b-20">Silahkan isi form di bawah ini dengan lengkap.</p>
                     <!-- message info -->
-                    @include('_component.message') 
+                    @include('_component.message')
                     <div class="pd-10 pd-sm-20 bg-gray-100">
                         <form action="{{ route('data_pengguna.update', $data->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -71,10 +72,10 @@
                                 <option value="administrator">administrator</option>
                                 <option value="operator">operator</option>
 
-                            </select>    
+                            </select>
                                     </div>
                                  </div>
-                                 
+
                                     <div class="row row-xs align-items-top mg-b-20">
                                         <div class="col-md-3">
                                             <label class="form-label mg-b-0">Foto </label>
@@ -83,8 +84,8 @@
                                             <input class="form-control" name="img" type="file">
                                             <small><p class="text-muted">* File Extention .png/.jpg/.jpeg  | size image Max 2MB : (1125px x 792px) &nbsp;</p></small>
                                             <img class="img-responsive" width="20%" height="auto" src="@if($data->img) {{asset('')}}images/user/{{$data->img}} @else {{asset('')}}images/no-image.png @endif">
-                                        </div> 
-                                    </div>    
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -100,5 +101,5 @@
     </div>
 
 </div>
-                                                  
+
 @endsection
